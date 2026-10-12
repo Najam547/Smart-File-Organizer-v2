@@ -1,41 +1,43 @@
-import os 
-import shutil
 import move
 import delete
 import rename
 import copy_files
 
-print("Welcome to file organizer.")
-while True :
-    print("1.Move your file.")
-    print("2.Rename your whole directory batch.")
-    print("3.Delete batch or files.")
-    print("4.Copy batch or file")
-    print("5.Exit.")
+
+def main():
+    print("Welcome to File Organizer.")
+
     while True:
-        try:
-            choice = int(input("Enter your choice: "))
+        print("\n========== MAIN MENU ==========")
+        print("1. Move files.")
+        print("2. Rename files.")
+        print("3. Delete files or folders.")
+        print("4. Copy files.")
+        print("5. Exit.")
 
-            if 1 <= choice <= 5:
-                break
+        while True:
+            try:
+                choice = int(input("Enter your choice: "))
 
-            print("Select a number between 1 and 5.")
+                if 1 <= choice <= 5:
+                    break
 
-        except ValueError:
-            print("Invalid input. Enter a number.")
+                print("Select a number between 1 and 5.")
 
-    if choice == 1 :
-        move.move_batch()
+            except ValueError:
+                print("Invalid input. Enter a number.")
 
-    elif choice == 2 :
-        rename.rename_batch()
+        if choice == 1:
+            move.move_batch()
+        elif choice == 2:
+            rename.rename_batch()
+        elif choice == 3:
+            delete.delete_batch()
+        elif choice == 4:
+            copy_files.copy_batch()
+        elif choice == 5:
+            print("Thank you for using File Organizer.")
+            break
 
-    elif choice == 3 :
-        delete.delete_batch()
-
-    elif choice == 4 :
-        copy_files.copy_batch()
-    elif choice == 5 :
-        break
-    else :
-        print("You entered an invalid choice.")
+if __name__ == "__main__":
+    main()
